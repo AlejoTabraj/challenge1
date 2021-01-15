@@ -37,6 +37,9 @@ export const App = () => {
             <Navigation/>
             <hr/>
             <Switch>
+                <Route path='/form/:id'>
+                    <Form posts={posts}/>
+                </Route>
                 <Route path='/posts/:id'>
                     <Detalle posts={posts}/>
                 </Route>

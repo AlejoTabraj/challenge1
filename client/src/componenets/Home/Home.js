@@ -19,7 +19,7 @@ export const Home = ({posts, onClick}) => {
                     </li>
                 </ListWrapper>
                 <button onClick={()=> onClick(post.id)}>Delete</button>
-                <button>Update</button>
+                <button><Link to={`/form/${post.id}`}>Update</Link></button>
                 </>
                 ) )
             }
