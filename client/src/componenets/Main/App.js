@@ -16,26 +16,34 @@ import { Detalle } from '../Detalle/Detalle'
 
 export const App = () => {
     const [posts, setPosts] = useState([]);
+
+
+    const deletePostEvent = (id) => {
+        const data = posts.data.filter( post => post.id !== +id )
+        setPosts({...posts, data  })
+
+    }
     
     useEffect(() => {
-      const data = getAllPosts().then( data => {
+    //eslint-disable-next-line
+        const data = getAllPosts().then( data => {
            setPosts({...posts, data})
        })
+    //eslint-disable-next-line
     }, [])
     return (
         <Router>
             <div>
-    <h1></h1>
             <Navigation/>
             <hr/>
             <Switch>
                 <Route path='/posts/:id'>
                     <Detalle posts={posts}/>
                 </Route>
-                <Route path='/home'>
-                    <Home posts={posts}/>
+                <Route path='/home' exact>
+                    <Home posts={posts} onClick={(id) => deletePostEvent(id)}/>
                 </Route>
-                <Route path='/form'>
+                <Route path='/form' exact>
                     <Form/>
                 </Route>
             </Switch>

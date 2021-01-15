@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Container, NavLink } from './styledNav'
 
 export const Navigation = () => {
     return (
         <>
-            <div>
-                <Link to='/home'>Home</Link>
-                <Link to='/form'>Form</Link>               
-            </div>
+            <Container>
+                <NavLink to='/home'>Home</NavLink>
+                <NavLink to='/form'>Form</NavLink>               
+            </Container>
         </>
     )
 }

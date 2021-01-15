@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import createPost from '../../Services/createPost'
+import { FormWrapp } from './styledForm'
 
 export const Form = () => {
     const [post, setPost] = useState({
@@ -10,6 +11,7 @@ export const Form = () => {
 
     const onSubmited = (e) => {
         e.preventDefault()
+        // eslint-disable-next-line
         const submited = createPost(post.title, post.content)
                             .then( response => {
                                 console.log(response)
@@ -22,9 +24,8 @@ export const Form = () => {
 
     return (
         <>
-        <form onSubmit={onSubmited}>
-
-            { console.log(post)}            
+        <FormWrapp onSubmit={onSubmited}>
+            
             <label htmlFor='title'>Title </label>
                  <input onChange={e => setPost({ ...post, title: e.target.value })} type='text' name='title' id='title' required></input>
            
@@ -33,9 +34,9 @@ export const Form = () => {
                 <textarea onChange={e => setPost({ ...post, content: e.target.value })} type='text' name='content' id='content'></textarea>
         
             <button type='submit'>Crear</button>
-        </form>
+        </FormWrapp>
         {
-                post.creado ? (<h3>Tú post a sido creado con exito</h3>) : (<h3>Lo sentimos no hemos pdido crear el post</h3>)    
+                post.creado ? (<h3>Tú post a sido creado con exito</h3>) : (null)    
         }
         
         </>
